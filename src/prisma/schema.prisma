@@ -124,7 +124,7 @@ model Membership {
   updatedByMembershipId String?     @default(dbgenerated("NULLIF((current_setting('app.current_membership_id'::text)), '')::uuid")) @db.Uuid
   updatedByMembership   Membership? @relation("updatedByMembership", fields: [updatedByMembershipId], references: [id], onDelete: SetNull)
   importHash            String?     @unique
-
+ 
   userId          String           @db.Uuid
   user            User             @relation(fields: [userId], references: [id], onDelete: Cascade)
   firstName       String?
